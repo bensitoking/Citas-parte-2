@@ -1,7 +1,6 @@
-import React from "react";
 import "./Form.css";
 import React, { useState } from "react";
-function Form()
+function Form({ onAgregarCita })
 {
 
     const [mascota, setMascota] = useState("");
@@ -10,9 +9,21 @@ function Form()
     const [hora, setHora] = useState("");
     const [sintomas, setSintomas] = useState("");
 
+    const Submit = (e) => {
+        e.preventDefault();
+        const nuevaCita = { mascota, dueño, fecha, hora, sintomas };
+        onAgregarCita(nuevaCita);
+    
+        setMascota("");
+        setDueño("");
+        setFecha("");
+        setHora("");
+        setSintomas("");
+      };
+
     return (
         <div className="one-half column">
-            <form >
+            <form onSubmit={Submit}>
                 <label>Nombre Mascota</label>
                 <input 
                 type="text" 
@@ -39,7 +50,13 @@ function Form()
                 onChange={(e) => setFecha(e.target.value)}
                 />
                 <label>hora</label>
-                <input type="time" name="hora" className="u-full-width" value=""/>
+                <input 
+                type="time" 
+                name="hora" 
+                className="u-full-width" 
+                value={hora}
+                onChange={(e) => setHora(e.target.value)}
+                />
                 <label>Sintomas</label>
                 <textarea 
                 name="sintomas" 

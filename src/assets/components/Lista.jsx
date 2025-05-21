@@ -1,12 +1,18 @@
-import React from 'react';
+
 import "./Lista.css";
 import Cita from './Cita';
-function Lista() 
+function Lista({citas, eliminarCita }) 
 {
     return (
         <div className="one-half column">
             <h2>Crear mi Cita</h2>
-            <Cita/>
+            {citas.map((cita, index) => (
+            <Cita
+              key={index}
+              datos={cita}
+              onEliminar={() => eliminarCita(index)}
+            />
+            ))}
         </div>
     );
 }

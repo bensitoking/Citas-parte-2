@@ -1,16 +1,20 @@
-import React from "react";
 import "./Cita.css";
-function Cita(){
+import React, { useState } from "react";
+function Cita({datos, onEliminar}){
+
+    const { mascota, propietario, fecha, hora, sintomas } = datos;
+
     return (
         <>
         <div className="cita">
-            <p>Mascota: <span>Nina</span></p>
-            <p>Dueño: <span>Martin</span></p>
-            <p>Fecha: <span>2021-08-05</span></p>
-            <p>Hora: <span>08:20</span></p>
-            <p>Sintomas: <span>Le duele la pierna</span></p>
+        <p>Mascota: <span>{mascota}</span></p>
+        <p>Dueño: <span>{propietario}</span></p>
+        <p>Fecha: <span>{fecha}</span></p>
+        <p>Hora: <span>{hora}</span></p>
+        <p>Síntomas: <span>{sintomas}</span></p>
             <button 
             className="button elimnar u-full-width"
+            onClick={onEliminar}
             >Eliminar ×
             </button>
         </div>
