@@ -11,6 +11,17 @@ function Form({ onAgregarCita })
 
     const Submit = (e) => {
         e.preventDefault();
+        if (
+            mascota.trim() === "" ||
+            dueño.trim() === "" ||
+            fecha.trim() === "" ||
+            hora.trim() === "" ||
+            sintomas.trim() === ""
+          ) {
+            alert("Todos los campos son obligatorios.");
+            return;
+          }
+
         const nuevaCita = { mascota, dueño, fecha, hora, sintomas };
         onAgregarCita(nuevaCita);
     

@@ -7,9 +7,10 @@ import  Form  from './assets/components/Form.jsx'
 function App() {
   const [citas, setCitas] = useState([]);
 
-  const agregarCita = (nuevaCita) => {
-    setCitas([...citas, nuevaCita]);
-  };
+  function agregarCita(nuevaCita) {
+    setCitas(cita => [...cita, nuevaCita]);
+  }
+  
 
   const eliminarCita = (index) => {
     const nuevasCitas = citas.filter((_, i) => i !== index);
